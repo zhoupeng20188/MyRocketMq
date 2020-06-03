@@ -7,6 +7,9 @@ import org.apache.rocketmq.common.message.MessageExt;
 
 import java.util.List;
 
+/**
+ * 事务消息消费者
+ */
 public class TransactionConsumer {
 
     public static void main(String[] args) throws InterruptedException, MQClientException {
@@ -15,7 +18,7 @@ public class TransactionConsumer {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("transaction_group_test");
 
         // Specify name server addresses.
-        consumer.setNamesrvAddr("localhost:9876");
+        consumer.setNamesrvAddr(ConfigConsts.rocket_host);
         
         // Subscribe one more more topics to consume.
         consumer.subscribe("TopicTest1234", "*");

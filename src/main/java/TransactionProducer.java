@@ -29,6 +29,9 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 事务消息生产者
+ */
 public class TransactionProducer {
     public static void main(String[] args) throws MQClientException, InterruptedException {
         TransactionListener transactionListener = new TransactionListenerImpl();
@@ -41,7 +44,7 @@ public class TransactionProducer {
                 return thread;
             }
         });
-        producer.setNamesrvAddr("localhost:9876");
+        producer.setNamesrvAddr(ConfigConsts.rocket_host);
         producer.setExecutorService(executorService);
         producer.setTransactionListener(transactionListener);
         producer.start();

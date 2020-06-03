@@ -15,7 +15,7 @@ public class Consumer {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("simple_group_test");
          
         // Specify name server addresses.
-        consumer.setNamesrvAddr("localhost:9876");
+        consumer.setNamesrvAddr(ConfigConsts.rocket_host);
         
         // Subscribe one more more topics to consume.
         consumer.subscribe("TopicTest", "*");

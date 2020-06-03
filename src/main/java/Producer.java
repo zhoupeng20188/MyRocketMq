@@ -14,7 +14,7 @@ public class Producer {
         DefaultMQProducer producer = new
                 DefaultMQProducer("simple_group_test");
         // Specify name server addresses.
-        producer.setNamesrvAddr("localhost:9876");
+        producer.setNamesrvAddr(ConfigConsts.rocket_host);
         //Launch the instance.
         producer.start();
         for (int i = 0; i < 100; i++) {
