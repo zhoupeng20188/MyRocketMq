@@ -14,7 +14,7 @@ import java.util.List;
 public class OrderedProducer {
     public static void main(String[] args) throws Exception {
         //Instantiate with a producer group name.
-        DefaultMQProducer producer = new DefaultMQProducer("order_group");
+        DefaultMQProducer producer = new DefaultMQProducer("order_group",true);
         producer.setNamesrvAddr(ConfigConsts.rocket_host);
         //Launch the instance.
         producer.start();

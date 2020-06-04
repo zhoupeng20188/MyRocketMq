@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class OrderedConsumer {
     public static void main(String[] args) throws Exception {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("order_group");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("order_group", true);
         consumer.setNamesrvAddr(ConfigConsts.rocket_host);
 //        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 
