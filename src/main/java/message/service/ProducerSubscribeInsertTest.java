@@ -7,12 +7,15 @@ import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
- * 公告已读
+ * 订阅消息插入
  * @Author zp
  * @create 2019/9/16 10:05
  */
-public class ProducerAnnounceReadTest {
+public class ProducerSubscribeInsertTest {
 
     public static void main(String[] args) throws Exception {
         //Instantiate with a producer group name.
@@ -22,19 +25,30 @@ public class ProducerAnnounceReadTest {
         producer.setNamesrvAddr(ConfigConsts.rocket_host);
         //Launch the instance.
         producer.start();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        for (int i = 1; i < 10; i++) {
             JSONObject jsonObject = new JSONObject();
-//            jsonObject.put("userId","001");
+            jsonObject.put("createTime",new Date());
+//            jsonObject.put("createTime",format.parse("2019-09-11 15:00:00"));
             jsonObject.put("projectId","prj001");
-            jsonObject.put("id","5ee1e6605e60060b08442eb1");
-            jsonObject.put("year","2020");
+            jsonObject.put("targetId","tid001");
+            jsonObject.put("targetName","货币战争");
+            jsonObject.put("targetType","article");
+            jsonObject.put("bizId","biz"+i);
+            jsonObject.put("action", "remind");
+            jsonObject.put("subscribeUserId", "001");
+            jsonObject.put("isRead", false);
+//            jsonObject.put("readTime", null);
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("iop-message-announce-read" /* Topic */,
+            Message msg = new Message("iop-message-subscribe-insert" /* Topic */,
                     "TagA" /* Tag */,
                     jsonObject.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );
             //Call send message to deliver message to one of brokers.
             SendResult sendResult = producer.send(msg);
             System.out.printf("%s%n", sendResult);
+            Thread.sleep(500);
+        }
         //Shut down once the producer instance is not longer in use.
         producer.shutdown();
     }

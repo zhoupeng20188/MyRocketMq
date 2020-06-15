@@ -8,11 +8,11 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
- * 公告已读
+ * 订阅消息已读
  * @Author zp
  * @create 2019/9/16 10:05
  */
-public class ProducerAnnounceReadTest {
+public class ProducerSubscribeReadTest {
 
     public static void main(String[] args) throws Exception {
         //Instantiate with a producer group name.
@@ -25,10 +25,10 @@ public class ProducerAnnounceReadTest {
             JSONObject jsonObject = new JSONObject();
 //            jsonObject.put("userId","001");
             jsonObject.put("projectId","prj001");
-            jsonObject.put("id","5ee1e6605e60060b08442eb1");
+            jsonObject.put("id","5ee716fb5e60060e24d5b7c4");
             jsonObject.put("year","2020");
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("iop-message-announce-read" /* Topic */,
+            Message msg = new Message("iop-message-subscribe-read" /* Topic */,
                     "TagA" /* Tag */,
                     jsonObject.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );
