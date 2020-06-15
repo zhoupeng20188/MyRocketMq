@@ -1,28 +1,43 @@
+package message.service;
+
+import com.alibaba.fastjson.JSONObject;
+import consts.ConfigConsts;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
+ * 公告插入
  * @Author zp
  * @create 2019/9/16 10:05
  */
-public class Producer {
+public class ProducerAnnounceInsertTest {
 
     public static void main(String[] args) throws Exception {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new
-                DefaultMQProducer("simple_group_test");
+                DefaultMQProducer("iop-message-producer");
         // Specify name server addresses.
         producer.setNamesrvAddr(ConfigConsts.rocket_host);
         //Launch the instance.
         producer.start();
-        for (int i = 0; i < 100; i++) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        for (int i = 11; i < 20; i++) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("createTime",new Date());
+//            jsonObject.put("createTime",format.parse("2019-09-11 15:00:00"));
+            jsonObject.put("projectId","prj001");
+            jsonObject.put("title"+i,"公告"+i);
+            jsonObject.put("content"+i,"公告内容"+i);
+            jsonObject.put("bizId","biz"+i);
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("TopicTest" /* Topic */,
+            Message msg = new Message("iop-message-announce-insert" /* Topic */,
                     "TagA" /* Tag */,
-                    ("Hello RocketMQ " +
-                            i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
+                    jsonObject.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );
             //Call send message to deliver message to one of brokers.
             SendResult sendResult = producer.send(msg);

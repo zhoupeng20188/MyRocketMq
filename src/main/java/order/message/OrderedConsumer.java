@@ -1,3 +1,6 @@
+package order.message;
+
+import consts.ConfigConsts;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
@@ -50,6 +53,6 @@ public class OrderedConsumer {
 
         consumer.start();
 
-        System.out.printf("Consumer Started.%n");
+        System.out.printf("general.message.Consumer Started.%n");
     }
 }

@@ -1,3 +1,6 @@
+package general.message;
+
+import consts.ConfigConsts;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -36,6 +39,6 @@ public class Consumer {
         //Launch the consumer instance.
         consumer.start();
 
-        System.out.printf("Consumer Started.%n");
+        System.out.printf("general.message.Consumer Started.%n");
     }
 }

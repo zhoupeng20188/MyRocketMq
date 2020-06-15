@@ -1,3 +1,5 @@
+package consts;
+
 /**
  * @Author zp
  * @create 2020/6/3 9:40

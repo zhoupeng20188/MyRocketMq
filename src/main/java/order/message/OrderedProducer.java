@@ -1,5 +1,7 @@
+package order.message;
+
+import consts.ConfigConsts;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.apache.rocketmq.client.producer.MQProducer;
 import org.apache.rocketmq.client.producer.MessageQueueSelector;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
@@ -22,7 +24,7 @@ public class OrderedProducer {
         for (int i = 0; i < 10; i++) {
             int orderId = i;
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("orderTest", "order", "KEY" + i,
+            Message msg = new Message("orderTest", "order/message", "KEY" + i,
                     ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
             SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
             @Override
