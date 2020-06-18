@@ -26,7 +26,7 @@ public class ProducerRemindInsertTest {
         //Launch the instance.
         producer.start();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        for (int i = 1; i < 10; i++) {
+        for (int i = 13; i < 14; i++) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("createTime",new Date());
 //            jsonObject.put("createTime",format.parse("2019-09-11 15:00:00"));
@@ -37,6 +37,10 @@ public class ProducerRemindInsertTest {
             jsonObject.put("action", "remind");
             jsonObject.put("targetUserId", "001");
             jsonObject.put("isRead", false);
+            jsonObject.put("isMailSend", true);
+            jsonObject.put("mailAddress", "287214764@qq.com");
+            jsonObject.put("mailTitle", "MQ联调测试");
+            jsonObject.put("mailContent", "<h1>MQ联调测试内容</h1>");
 //            jsonObject.put("readTime", null);
             //Create a message instance, specifying topic, tag and message body.
             Message msg = new Message("iop-message-remind-insert" /* Topic */,
