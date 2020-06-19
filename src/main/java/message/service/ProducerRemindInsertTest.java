@@ -31,8 +31,8 @@ public class ProducerRemindInsertTest {
             jsonObject.put("createTime",new Date());
 //            jsonObject.put("createTime",format.parse("2019-09-11 15:00:00"));
             jsonObject.put("projectId","prj001");
-            jsonObject.put("title"+i,"到期提醒标题"+i);
-            jsonObject.put("content"+i,"到期提醒内容"+i);
+            jsonObject.put("title","到期提醒标题"+i);
+            jsonObject.put("content","到期提醒内容"+i);
             jsonObject.put("bizId","biz"+i);
             jsonObject.put("action", "remind");
             jsonObject.put("targetUserId", "001");

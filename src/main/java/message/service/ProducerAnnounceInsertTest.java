@@ -26,13 +26,14 @@ public class ProducerAnnounceInsertTest {
         //Launch the instance.
         producer.start();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        for (int i = 70; i < 80; i++) {
+        for (int i = 10; i < 11; i++) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("createTime",new Date());
 //            jsonObject.put("createTime",format.parse("2019-09-11 15:00:00"));
             jsonObject.put("projectId","prj001");
-            jsonObject.put("title"+i,"公告"+i);
-            jsonObject.put("content"+i,"公告内容"+i);
+            jsonObject.put("userGroup","group001");
+            jsonObject.put("title","公告"+i);
+            jsonObject.put("content","公告内容"+i);
             jsonObject.put("bizId","biz"+i);
             //Create a message instance, specifying topic, tag and message body.
             Message msg = new Message("iop-message-announce-insert" /* Topic */,
