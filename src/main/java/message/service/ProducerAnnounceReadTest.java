@@ -23,12 +23,13 @@ public class ProducerAnnounceReadTest {
         //Launch the instance.
         producer.start();
             JSONObject jsonObject = new JSONObject();
-//            jsonObject.put("userId","001");
+            jsonObject.put("userId","001");
+            jsonObject.put("bizId","biz19");
             jsonObject.put("projectId","prj001");
-            jsonObject.put("id","5ee1e6605e60060b08442eb1");
+//            jsonObject.put("id","5ee1e6605e60060b08442eb1");
             jsonObject.put("year","2020");
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("iop-message-announce-read" /* Topic */,
+            Message msg = new Message("iop-message-announce-read-dev" /* Topic */,
                     "TagA" /* Tag */,
                     jsonObject.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );

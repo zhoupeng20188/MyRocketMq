@@ -26,7 +26,7 @@ public class ProducerRemindInsertTest2 {
         //Launch the instance.
         producer.start();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        for (int i = 10; i < 20; i++) {
+        for (int i = 26; i < 27; i++) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("createTime",new Date());
 //            jsonObject.put("createTime",format.parse("2019-09-11 15:00:00"));
@@ -36,9 +36,11 @@ public class ProducerRemindInsertTest2 {
             jsonObject.put("bizId","biz"+i);
             jsonObject.put("action", "like");
             jsonObject.put("targetId", "aid001");
-            jsonObject.put("targetType", "article");
+            jsonObject.put("targetType", "文章");
             jsonObject.put("targetName", "大国战略");
             jsonObject.put("targetUserId", "001");
+            jsonObject.put("isSmsSend", true);
+            jsonObject.put("phone", "15971431252");
             jsonObject.put("isRead", false);
 //            jsonObject.put("readTime", null);
             //Create a message instance, specifying topic, tag and message body.

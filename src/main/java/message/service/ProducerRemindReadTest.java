@@ -25,10 +25,11 @@ public class ProducerRemindReadTest {
             JSONObject jsonObject = new JSONObject();
 //            jsonObject.put("userId","001");
             jsonObject.put("projectId","prj001");
-            jsonObject.put("id","5ee2eb7d5e60063828f2ea74");
+            jsonObject.put("id","5efdaa0c4bffda00016d6860");
+//            jsonObject.put("bizId","biz31");
             jsonObject.put("year","2020");
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("iop-message-remind-read" /* Topic */,
+            Message msg = new Message("iop-message-remind-read-dev" /* Topic */,
                     "TagA" /* Tag */,
                     jsonObject.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );

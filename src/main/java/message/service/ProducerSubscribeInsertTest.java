@@ -33,14 +33,14 @@ public class ProducerSubscribeInsertTest {
             jsonObject.put("projectId","prj001");
             jsonObject.put("targetId","aid001");
             jsonObject.put("targetName","货币战争");
-            jsonObject.put("targetType","article");
-            jsonObject.put("bizId","biz2");
+            jsonObject.put("targetType","文章");
+            jsonObject.put("bizId","biz3");
 //            jsonObject.put("action", "remind");
 //            jsonObject.put("subscribeUserId", "001");
 //            jsonObject.put("isRead", false);
 //            jsonObject.put("readTime", null);
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("iop-message-subscribe-insert" /* Topic */,
+            Message msg = new Message("iop-message-subscribe-insert-dev" /* Topic */,
                     "TagA" /* Tag */,
                     jsonObject.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );

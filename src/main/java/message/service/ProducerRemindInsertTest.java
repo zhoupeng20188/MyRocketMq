@@ -22,28 +22,30 @@ public class ProducerRemindInsertTest {
         DefaultMQProducer producer = new
                 DefaultMQProducer("iop-message-producer");
         // Specify name server addresses.
-        producer.setNamesrvAddr(ConfigConsts.rocket_host);
-        //Launch the instance.
-        producer.start();
+//        producer.setNamesrvAddr(ConfigConsts.rocket_host_fat);
+//        //Launch the instance.
+//        producer.start();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        for (int i = 13; i < 14; i++) {
+        for (int i = 15; i < 16; i++) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("createTime",new Date());
 //            jsonObject.put("createTime",format.parse("2019-09-11 15:00:00"));
-            jsonObject.put("projectId","prj001");
+            jsonObject.put("projectId","prj100");
             jsonObject.put("title","到期提醒标题"+i);
             jsonObject.put("content","到期提醒内容"+i);
             jsonObject.put("bizId","biz"+i);
             jsonObject.put("action", "remind");
             jsonObject.put("targetUserId", "001");
-            jsonObject.put("isRead", false);
-            jsonObject.put("isMailSend", true);
-            jsonObject.put("mailAddress", "287214764@qq.com");
-            jsonObject.put("mailTitle", "MQ联调测试");
-            jsonObject.put("mailContent", "<h1>MQ联调测试内容</h1>");
+//            jsonObject.put("isRead", false);
+//            jsonObject.put("isMailSend", true);
+//            jsonObject.put("mailAddress", "287214764@qq.com");
+//            jsonObject.put("mailTitle", "MQ联调测试");
+//            jsonObject.put("mailContent", "<h1>MQ联调测试内容</h1>");
 //            jsonObject.put("readTime", null);
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("iop-message-remind-insert" /* Topic */,
+
+            System.out.println(jsonObject.toString());
+            Message msg = new Message("iop-message-remind-insert-fat" /* Topic */,
                     "TagA" /* Tag */,
                     jsonObject.toJSONString().getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );
